@@ -17,7 +17,9 @@ app.use("/artists", require("./artists/artist.routes"));
 
 app.use("/tracks", require("./tracks/track.routes"));
 
-app.use("/media-types", require("./media-types/media-type.routes"))
+app.use("/media-types", require("./media-types/media-type.routes"));
+
+app.use("/auth", require("./auth/auth.routes"));
 
 
 
