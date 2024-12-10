@@ -1544,6 +1544,7 @@ ALTER TABLE `user`
 
 UPDATE user SET UserPassword = '$2a$08$zvWApJkRSK1124iESJU5Puo9mUelLn3sgy9A.dPSySghLe7MMGGGS', UserSalt = 'xxx';
 
+
 COMMIT;
 
 
