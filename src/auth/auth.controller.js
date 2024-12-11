@@ -8,6 +8,7 @@ exports.loginHandler = async (req, res, next) => {
     
     const token = getToken(user.id, user.roleId);
     res.setHeader("Authorization","Bearer " + token);
+    
 
     res.json(user);
   }catch(err){
@@ -21,7 +22,7 @@ exports.loginHandler = async (req, res, next) => {
 
 exports.logoutHandler = async (req, res, next) => {
   try{
-    res.json({message:"TODO: log out"});
+    res.json({message:"Logged Out"});
   }catch(err){
     next(err);
   }

@@ -6,7 +6,7 @@ exports.getAllMediaTypes = async () => {
   const connection = await pool.getConnection();
   const sql = "SELECT MediaTypeId, Name FROM mediatype ";
   const [rows] = await connection.query(sql);
-  const allMediaTypes = rows.map(r => new MediaType({id: r.id, name: r.name}));
+  const allMediaTypes = rows.map(r => new MediaType({id: r.MediaTypeId, name: r.Name}));
 
   connection.release();
   return allMediaTypes;
