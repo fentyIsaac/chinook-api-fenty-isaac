@@ -66,10 +66,10 @@ exports.updateHandler = async (req, res, next) => {
         if(result === true){
           res.status(200).json({message:"success"});
         }else{
-          res.status(400).json({message:"failed to update"});
+          res.status(400).json({message:"failed to update",});
         }
       }else{
-        res.status(400).json({message:"failed - invalid"});
+        res.status(400).json({message:"failed - invalid",});
       }
 
     }else{

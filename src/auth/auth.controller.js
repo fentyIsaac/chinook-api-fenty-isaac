@@ -38,7 +38,7 @@ exports.isLoggedIn = (req, res, next) => {
     if(exp < currentTimeInSeconds){
       throw new Error("Token expired");
     }else{
-      // TODO: you could use the auth.data.service to see of the user is still active
+      
       next();
       return;
     } 
