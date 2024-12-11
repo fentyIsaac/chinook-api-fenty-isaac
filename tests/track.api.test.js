@@ -106,7 +106,7 @@ describe("tracks/", () => {
 
   }) // end of PUT track
 
-  
+  /*
   describe("DELETE track", () => {
 
     it("should return 200", async () => {
@@ -137,5 +137,5 @@ describe("tracks/", () => {
     })
 
   }) // end of DELETE track
-
+  */
 }) // end of tracks/

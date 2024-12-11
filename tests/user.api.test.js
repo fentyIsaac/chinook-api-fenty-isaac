@@ -104,7 +104,7 @@ describe("users/", () => {
       const response = await sessionAgent.delete("/users/" + idToDelete);
       expect(response.status).toBe(400);
     })
-
+  
   }) // end of DELETE user
-
+  
 })

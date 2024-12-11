@@ -154,7 +154,8 @@ describe("Track Data Service", ()=>{
   
   
   describe("deleteTrack()", () => {
-                
+    // Have to insert a new track before calling a delete function
+
     it("should return true on successful delete", async () => {
       const newTrack = new Track({
         name:"some new track",
