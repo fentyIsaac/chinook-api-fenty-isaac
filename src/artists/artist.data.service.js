@@ -4,7 +4,7 @@ const Artist = require("./artist.model");
 
 exports.getAllArtists = async () => {
   const connection = await pool.getConnection();
-  const sql = "SELECT ArtistId FROM artist";
+  const sql = "SELECT ArtistId, Name FROM artist";
   const [rows] = await connection.query(sql);
   const allArtist = rows.map(r => new Artist({id: r.ArtistId, name: r.Name}));
   connection.release();
