@@ -2,12 +2,12 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const SALT_ROUNDS = 8; 
-// here's an explanation of salt rounds: https://stackoverflow.com/questions/46693430/what-are-salt-rounds-and-how-are-salts-stored-in-bcrypt
+
 
 const generateRandomSalt = async () => {
     
   const salt = await bcrypt.genSalt(SALT_ROUNDS);
-  //The length of the salt appears to be 29 characters (if it's longer then it will be truncated in the db)
+  
   return salt;
 }
 
@@ -27,10 +27,10 @@ const verifyPassword = async (password, salt, hashedPassword) => {
 }
 
 
-// We'll be talking about JWT tokens soon
+
 const getToken = (userId, roleId) => {
   const token = jwt.sign(
-      {userId, roleId}, // here's the payload, it has a 'userId' prop and a 'roleId' prop
+      {userId, roleId}, 
       process.env.JWT_SECRET, 
       {expiresIn: process.env.JWT_EXPIRES_IN} 
   );
@@ -45,7 +45,7 @@ const decodeToken = (token) => {
 
 module.exports = {
   generateRandomSalt,
-  saltPassword, // we could keep this private (but then we couldn't test it)
+  saltPassword, 
   saltAndHashPassword, 
   verifyPassword, 
   getToken,

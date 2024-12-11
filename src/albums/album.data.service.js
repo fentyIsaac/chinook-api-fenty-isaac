@@ -8,14 +8,14 @@ exports.getAllAlbums = async () => {
   const sql = `
     SELECT album.albumId, album.artistId, album.title, artist.name AS artist
     FROM album
-    JOIN artist ON album.artistId = artist.artistId`; // Corrected table name to 'artist'
+    JOIN artist ON album.artistId = artist.artistId`; 
   const [rows] = await connection.query(sql);
 
   const allAlbums = rows.map(r => new Album({
     id: r.albumId,
     title: r.title,
     artistId: r.artistId,
-    artist: r.artist // Now you have the artist's name correctly
+    artist: r.artist 
   }));
   connection.release();
   return allAlbums;
@@ -27,7 +27,7 @@ exports.getAlbumById = async (id) => {
     SELECT album.albumId, album.artistId, album.title, artist.name AS artist
     FROM album
     JOIN artist ON album.artistId = artist.artistId
-    WHERE album.albumId = ?`; // Corrected table name to 'artist'
+    WHERE album.albumId = ?`; 
   const [rows] = await connection.query(sql, [id]);
   let album = null;
 
@@ -36,7 +36,7 @@ exports.getAlbumById = async (id) => {
       id: rows[0].albumId,
       title: rows[0].title,
       artistId: rows[0].artistId,
-      artist: rows[0].artist // Now you have the artist's name correctly
+      artist: rows[0].artist 
     });
   }
   connection.release();

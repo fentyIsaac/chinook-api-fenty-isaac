@@ -26,11 +26,11 @@ exports.getMediaTypeById = async (id) => {
 
 
 exports.insertMediaType = async (mediaType) =>{
-  // make sure param is proper data type
+  
   if(mediaType.constructor.name != "MediaType"){
     throw new Error("Invalid parameter sent to insertMediaType() - must be a mediaType object");
   }
-  // make sure the genre is valid
+  
   const [isValid, errs] = mediaType.validate();
 
   if(isValid){

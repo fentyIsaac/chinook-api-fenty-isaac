@@ -7,7 +7,7 @@ exports.getAllUsers = async () => {
   const [rows] = await connection.query(sql);
   connection.close();
 
-  // If you have an arrow function when calling an instructor you need a return statement, otherwise remove the curly braces.
+  
   return rows.map(r => new User({
     id: r.UserId, 
     email: r.UserEmail, 
@@ -43,12 +43,12 @@ exports.getUserById = async (id) => {
 
 exports.insertUser = async (user) => {
   
-  // make sure that the param is an instance of a User model object
+  
   if(user.constructor.name !== "User"){
     throw new Error("Invalid parameter sent to insertUser() - must be a User model object")
   }
 
-  // make sure the user param is valid
+ 
   const [isValid, errs] = user.validate()
   
   if(isValid){
@@ -65,12 +65,12 @@ exports.insertUser = async (user) => {
 }
 
 exports.updateUser = async (user) => {
-  // make sure that the param is an instance of a User model object
+ 
   if(user.constructor.name !== "User"){
     throw new Error("Invalid parameter sent to updateUser() - must be a User model object")
   }
 
-  // make sure the user param is valid
+  
   const [isValid, errs] = user.validate()
   
   if(isValid){

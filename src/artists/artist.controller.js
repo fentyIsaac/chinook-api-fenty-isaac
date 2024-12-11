@@ -25,10 +25,10 @@ exports.getIdHandler = async (req, res, next) => {
 
 exports.insertHandler = async (req, res, next) => {
   try{
-    // parse the body of the request into a artist model
+   
     const artist = new Artist(req.body);
 
-    // validate the model
+    
     const [isValid, errors] = artist.validate();
 
     if(isValid){
@@ -47,7 +47,7 @@ exports.updateHandler = async (req, res, next) => {
   try{
     if(req.params.id == req.body.id){
 
-      // parse the body of the request into a artist model
+      
       const artist = new Artist(req.body);
 
       // validate the model

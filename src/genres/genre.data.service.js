@@ -6,7 +6,7 @@ exports.getAllGenres = async () =>{
   const connection = await pool.getConnection();
   const sql = "SELECT GenreId, Name FROM genre";
   const [rows] = await connection.query(sql);
-  //Convert rows into model objects (column names must be converted into property names)
+  
   const allGenres = rows.map(r => new Genre({id: r.GenreId, name: r.Name}));
   connection.release();
   return allGenres;
@@ -25,11 +25,11 @@ exports.getGenreById = async (id) =>{
 }
 
 exports.insertGenre = async (genre) =>{
-  // make sure param is proper data type
+  
   if(genre.constructor.name != "Genre"){
     throw new Error("Invalid parameter sent to insertGenre() - must be a genre object");
   }
-  // make sure the genre is valid
+  
   const [isValid, errs] = genre.validate();
 
   if(isValid){

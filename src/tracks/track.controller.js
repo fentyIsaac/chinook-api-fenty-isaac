@@ -26,10 +26,10 @@ exports.getByIdHandler = async (req, res, next) => {
 
 exports.insertHandler = async (req, res, next) => {
   try {
-    // Parse the body of the request into a Track model
+  
     const newTrack = new Track(req.body);
 
-    // Validate the model
+   
     const [isValid, errors] = newTrack.validate();
 
     if (isValid) {
@@ -46,10 +46,10 @@ exports.insertHandler = async (req, res, next) => {
 exports.updateHandler = async (req, res, next) => {
   try {
     if (parseInt(req.params.id) === parseInt(req.body.id)) {
-      // Parse the body of the request into a Track model
+      
       const track = new Track(req.body);
 
-      // Validate the model
+      
       const [isValid, errors] = track.validate();
 
       
@@ -74,14 +74,14 @@ exports.updateHandler = async (req, res, next) => {
 
 exports.deleteHandler = async (req, res, next) => {
   try {
-    const idToDelete = parseInt(req.params.id);  // Ensure the ID is parsed as an integer
+    const idToDelete = parseInt(req.params.id);  
     
-    // Check if the ID is a valid number
+    
     if (isNaN(idToDelete) || idToDelete <= 0) {
       return res.status(400).json({ message: "Invalid track ID" });
     }
 
-    // Proceed with the delete operation
+    
     const result = await deleteTrack(idToDelete);
     
     if (result === true) {

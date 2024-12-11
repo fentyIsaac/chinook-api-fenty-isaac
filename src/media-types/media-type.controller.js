@@ -2,7 +2,7 @@ const {getAllMediaTypes, getMediaTypeById, insertMediaType, updateMediaType, del
 const MediaType = require("./media-type.model");
 
 exports.getAllHandler = async(req, res, next) => {
-  //res.json({"message": "get all genres"})
+  
   try{
     const allMediaTypes = await getAllMediaTypes();
     res.json(allMediaTypes);
@@ -12,7 +12,7 @@ exports.getAllHandler = async(req, res, next) => {
 };
 
 exports.getIdHandler = async(req, res, next) => {
-  //res.json({"message": "get genre with id of " + req.params.id})
+  
 
   try{
   const mediaType = await getMediaTypeById(req.params.id);
@@ -27,7 +27,7 @@ exports.getIdHandler = async(req, res, next) => {
 };
 
 exports.insertHandler = async(req, res, next) => {
-  //res.json({"message": "insert genres"})
+  
   try{
     const mediaType = new MediaType(req.body);
     const [isValid, error] = mediaType.validate();
@@ -44,7 +44,7 @@ exports.insertHandler = async(req, res, next) => {
 };
 
 exports.updateHandler = async(req, res, next) => {
-  //res.json({"message": "update genre with id of " + req.params.id})
+ 
   try{
     if(req.params.id == req.body.id){
       const mediaType = new MediaType(req.body);
@@ -54,7 +54,7 @@ exports.updateHandler = async(req, res, next) => {
         if(result === true){
           res.status(200).json({message: "success"})
         }else{
-          res.status(500).json({message: "failed to updated"})
+          res.status(500).json({message: "failed to be updated"})
         }
       }else{
         res.status(400).json({message: "failed - invalid", err})
@@ -68,7 +68,7 @@ exports.updateHandler = async(req, res, next) => {
 };
 
 exports.deleteHandler = async(req, res, next) => {
-  //res.json({"message": "delete genre with id of " + req.params.id})
+ 
   try{
     const result = await deleteMediaType(req.params.id);
     if(result === true){

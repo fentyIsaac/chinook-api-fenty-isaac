@@ -7,7 +7,7 @@ app.get('/', (req, res, next) => {
   res.json({ message: 'Hello, world!' });
 });
 
-// ADD ROUTES HERE
+
 app.use("/genres", require("./genres/genre.routes"));
 
 app.use("/users", require("./users/user.routes"));
@@ -29,7 +29,7 @@ app.all("*", (req, res, next) => {
   next(err);
 })
 
-// ERROR HANDLER
+
 app.use((err, req, res, next) => {
   
   const statusCode = err.statusCode ||  500;
@@ -37,8 +37,7 @@ app.use((err, req, res, next) => {
   if(process.env.NODE_ENV == "production"){
     res.status(statusCode).json({message: "There has been an error!"});
   }else{
-    //console.log("STATUS CODE: " + statusCode);
-    //console.log("ERROR", err);
+    
     res.status(statusCode).json({message: err.message, stacktrace: err.stack});
   }
 });

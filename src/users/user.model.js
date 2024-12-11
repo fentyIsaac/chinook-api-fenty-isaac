@@ -17,7 +17,7 @@ class User {
     const errorMessages = {};
     
     
-    //VALIDATE id
+    
     if(isNaN(this.id)){
       errorMessages.id = "The user id must be a number";
       isValid = false;
@@ -25,7 +25,7 @@ class User {
       errorMessages.id = "The number must be greater than or equal to 0";
       isValid = false;
     }
-    //VALIDATE email
+    
     if(!this.email){
       errorMessages.email = "Email is required";
       isValid = false;
@@ -37,7 +37,7 @@ class User {
       isValid = false;
     } 
 
-    //VALIDATE roleId
+   
     if(typeof this.roleId != "number"){
       isValid = false;
       errorMessages.roleId = "The role Id must be a number";
@@ -46,18 +46,16 @@ class User {
       errorMessages.roleId = "The role must between a number from 1-3";
     }
 
-    // TODO: VALIDATE active
+    
 
 
 
-    // TODO: VALIDATE password
-    // Passwords should not be empty for inserts
-    // Passwords should be empty for updates
+    
     if(this.id === 0 && !this.password){
       errorMessages.password = "Password is required";
       isValid = false;
     }
-    // TODO: VALIDATE salt    
+       
     
     return [isValid, errorMessages]
 

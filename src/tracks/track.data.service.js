@@ -2,9 +2,7 @@ const pool = require("../db");
 const Track = require("./track.model");
 
 exports.getAllTracks = async () => {
-  // TODO: Run a query to get all rows 
-  // TODO: Convert each row into a model object and add it to an array
-  // TODO: Return the array 
+ 
   const connection = await pool.getConnection();
   try{
     const sql = "SELECT TrackId, Name, AlbumId, GenreId, MediaTypeId, Milliseconds, UnitPrice FROM track";
@@ -31,8 +29,7 @@ exports.getAllTracks = async () => {
 };
 
 exports.getTrackById = async (id) => {
-  // TODO: Run a query to get the row that matches the id parameter
-  // TODO: Convert the row to a model object
+
   const connection = await pool.getConnection();
   try{
     const sql = `
@@ -88,19 +85,18 @@ exports.getTrackById = async (id) => {
 
 exports.insertTrack = async (track) => {
   
-  // make sure that the param is an instance of a track.model.js model object
+ 
   if(track.constructor.name !== "Track"){
     throw new Error("Invalid parameter sent to insertTrack() - must be a track model object")
   }
 
-  // make sure the track.model.js param is valid
+  
   const [isValid, errs] = track.validate()
   if(!isValid){
     throw new Error("Invalid Track - " + JSON.stringify(errs));
   }
   
-    // TODO: Use the model properties to insert a row
-    // TODO: Return the insert ID
+    
 
   
       const connection = await pool.getConnection();
@@ -132,12 +128,12 @@ exports.insertTrack = async (track) => {
     };
 
 exports.updateTrack = async (track) => {
-  // make sure that the param is an instance of a track.model.js model object
+ 
   if(track.constructor.name !== "Track"){
     throw new Error("Invalid parameter sent to updateTrack() - must be a Track model object")
   }
 
-  // make sure the track.model.js param is valid
+  
   const [isValid, errs] = track.validate()
   if(!isValid){
     throw new Error("Invalid Track - " + JSON.stringify(errs));
@@ -188,8 +184,7 @@ exports.updateTrack = async (track) => {
 
 
 exports.deleteTrack = async (id) => {
-  // TODO: Run the query to delete the row based on the id param
-  // TODO: Return true if there is 1 affected row, otherwise return false
+  
 
   if(!id){
     throw new Error("Id is required for the delete operation");

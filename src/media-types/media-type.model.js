@@ -2,8 +2,8 @@ class MediaType {
 
   constructor({id = 0, name = ''}){
 		
-    this.id = id; // TODO: SET DEFAULT VALUE
-    this.name = name; // TODO: SET DEFAULT VALUE
+    this.id = id;
+    this.name = name; 
   }
 
   validate(){
@@ -12,8 +12,8 @@ class MediaType {
     const errorMessages = {};
     
     
-    // TODO: VALIDATE id
-    // TODO: VALIDATE name    
+    
+       
     if(typeof this.id !== 'number' || this.id < 0){
       isValid = false;
       errorMessages.id = "The ID must be greater than 0";

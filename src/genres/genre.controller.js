@@ -2,7 +2,7 @@ const{getAllGenres, getGenreById, insertGenre, updateGenre, deleteGenre} = requi
 const Genre = require("./genre.model");
 
 exports.getAllHandler = async(req, res, next) => {
-  //res.json({"message": "get all genres"})
+  
   try{
     const allGenres = await getAllGenres();
     res.json(allGenres);
@@ -12,8 +12,7 @@ exports.getAllHandler = async(req, res, next) => {
 };
 
 exports.getIdHandler = async(req, res, next) => {
-  //res.json({"message": "get genre with id of " + req.params.id})
-
+  
   try{
   const genre = await getGenreById(req.params.id);
   if(genre){
@@ -27,7 +26,7 @@ exports.getIdHandler = async(req, res, next) => {
 };
 
 exports.insertHandler = async(req, res, next) => {
-  //res.json({"message": "insert genres"})
+  
   try{
     const genre = new Genre(req.body);
     const [isValid, error] = genre.validate();
@@ -44,7 +43,7 @@ exports.insertHandler = async(req, res, next) => {
 };
 
 exports.updateHandler = async(req, res, next) => {
-  //res.json({"message": "update genre with id of " + req.params.id})
+ 
   try{
     if(req.params.id == req.body.id){
       const genre = new Genre(req.body);
@@ -68,7 +67,7 @@ exports.updateHandler = async(req, res, next) => {
 };
 
 exports.deleteHandler = async(req, res, next) => {
-  //res.json({"message": "delete genre with id of " + req.params.id})
+  
   try{
     const result = await deleteGenre(req.params.id);
     if(result === true){

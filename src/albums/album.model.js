@@ -11,8 +11,7 @@ class Album{
     const errorMessages = {};
 
 
-    // Validate Id
-    // it must be a number greater than or equal to 0
+    
 
     if(typeof this.id !== 'number' || this.id < 0){
       isValid = false;
@@ -20,10 +19,7 @@ class Album{
     }
 
 
-    // Validate name
-    // it cannot be empty
-    // Must be a string
-    // it must be less than or equal to 160 charachters
+    
 
     if(typeof this.title !== 'string'){
       isValid = false;

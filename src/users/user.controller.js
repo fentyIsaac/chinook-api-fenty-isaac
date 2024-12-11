@@ -33,10 +33,10 @@ exports.getByIdHandler = async (req, res, next) => {
 
 exports.insertHandler = async (req, res, next) => {
   try{
-    // parse the body of the request into a User model
+    
     const user = new User(req.body);
 
-    // validate the model
+    
     const [isValid, errors] = user.validate();
 
     if(isValid){
@@ -55,10 +55,10 @@ exports.updateHandler = async (req, res, next) => {
   try{
     if(req.params.id == req.body.id){
 
-      // parse the body of the request into a User model
+      
       const user = new User(req.body);
 
-      // validate the model
+      
       const [isValid, errors] = user.validate();
 
       if(isValid){
