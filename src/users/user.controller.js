@@ -21,11 +21,14 @@ exports.getByIdHandler = async (req, res, next) => {
   try{
     const user = await getUserById(req.params.id);
 
-    if(user){
-      user.password = "";
-      user.salt = "";
+    if(!user){
+      return res.status(404).json({message: "User was not found"});
     }
-    res.json(user);
+
+    user.password = "";
+    user.salt = "";
+    
+    res.status(200).json(user)
   }catch(err){
     next(err);
   }
@@ -45,7 +48,7 @@ exports.insertHandler = async (req, res, next) => {
     }else{
       res.status(400).json({message:"failed - invalid"});
     }
-
+    
   }catch(err){
     next(err);
   }

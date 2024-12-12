@@ -1,3 +1,7 @@
+// These are the updates to user.routes.js
+// We are protecting each route with the isLoggedIn middleware function,
+// which checks for a token sent in the Authorization header of the request
+
 const express = require('express');
 const router = express.Router();
 const {
@@ -8,14 +12,16 @@ const {
   deleteHandler
 } = require("./user.controller")
 
-router.get("/", getAllHandler);
+const {isLoggedIn} = require("../auth/auth.controller");
 
-router.post("/", insertHandler);
+router.get("/", isLoggedIn, getAllHandler);
 
-router.get("/:id", getByIdHandler);
+router.post("/", isLoggedIn, insertHandler);
 
-router.put("/:id", updateHandler);
+router.get("/:id", isLoggedIn, getByIdHandler);
 
-router.delete("/:id", deleteHandler);
+router.put("/:id", isLoggedIn, updateHandler);
+
+router.delete("/:id", isLoggedIn, deleteHandler);
 
 module.exports = router;

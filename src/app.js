@@ -1,5 +1,7 @@
 const express = require('express');
+const helmet = require("helmet");
 const app = express();
+
 
 app.use(express.json());
 // If using front-end we would need a CORS package.
@@ -50,6 +52,7 @@ app.use("/tracks", require("./tracks/track.routes"));
 app.use("/media-types", require("./media-types/media-type.routes"));
 
 app.use("/auth", require("./auth/auth.routes"));
+app.use(helmet());
 
 
 
