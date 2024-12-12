@@ -1,9 +1,11 @@
 const express = require('express');
-const helmet = require("helmet");
+const helmet = require('helmet');
+const cors = require('cors');
 const app = express();
 
-
+app.use(helmet());
 app.use(express.json());
+
 // If using front-end we would need a CORS package.
 // Thus allowing cross-origin resourfce sharing
 
@@ -35,6 +37,14 @@ app.use(cors(corsConfig));
 */
 
 
+const corsOptions = {
+   origin: 'http://localhost:5173', 
+  optionsSuccessStatus: 200, 
+  exposedHeaders: ['Authorization'], 
+};
+
+app.use(cors(corsOptions));
+
 app.get('/', (req, res, next) => {
   res.json({ message: 'Hello, world!' });
 });
@@ -52,7 +62,7 @@ app.use("/tracks", require("./tracks/track.routes"));
 app.use("/media-types", require("./media-types/media-type.routes"));
 
 app.use("/auth", require("./auth/auth.routes"));
-app.use(helmet());
+
 
 
 
